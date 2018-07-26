@@ -36,13 +36,20 @@ class App extends Component {
   }
 
   render() {
-
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
 
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working!</p>
         <button
+          style={style}
           onClick={() => this.switchNameHandler('Maximilian!!')}>Switch Name</button>
         {/*This above can be in-efficient and performance hit. Instead use Bind*/}
         {/* => array automatically adds a return type if written in one line */}
