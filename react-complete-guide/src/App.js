@@ -12,12 +12,12 @@ class App extends Component {
     ]
   }
 
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     // console.log('Was clicked!')
     // DON'T DO THIS: this.state.persons[0].name = 'Abhimanyu Aryan'
     this.setState({
       persons:[
-        { name: 'Maximlian', age: 20 },
+        { name: newName, age: 20 },
         { name: 'Manu', age: 29 },
         { name: 'Stephanie', age: 26 }
       ]
@@ -29,10 +29,19 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working!</p>
-        <button onClick={this.switchNameHandler}>Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}>My Hobby: Coding</Person>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>My Hobby: Watching Netflix</Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}>My Hobby: Taking Siri out</Person>
+        <button onClick={() => this.switchNameHandler('Maximilian!!')}>Switch Name</button>
+        {/*This above can be in-efficient and performance hit. Instead use Bind*/}
+        {/* => array automatically adds a return type if written in one line */}
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}/>
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+          click={this.switchNameHandler.bind(this, 'Max!')}>My Hobby: Watching Netflix</Person>
+        <Person
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age}/>
       </div>
     );
   }
